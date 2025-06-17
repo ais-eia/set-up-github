@@ -4,9 +4,6 @@ This assignment will familiarize you with Python's basics.
 '''
 
 def savings(gross_pay, tax_rate, expenses):
-    x = int (gross_pay * (1-tax_rate))
-    x = x - expenses
-    return x
     '''Savings.
 
     This function calculates the money remaining
@@ -33,12 +30,11 @@ def savings(gross_pay, tax_rate, expenses):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-print(savings(100,0.12,3))
+    x = int (gross_pay * (1-tax_rate))
+    x = x - expenses
+    return int(x)
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
-    x = num_jobs * job_consumption
-    x = total_material - x
-    return x
     '''Material Waste.
 
     This function calculates how much material input will be wasted
@@ -70,12 +66,11 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-print(material_waste(10000,"L",50,25))
+    x = num_jobs * job_consumption
+    x = total_material - x
+    return str(x) + str(material_units)
 
 def interest(principal, rate, periods):
-    x = principal * (rate * periods)
-    x = principal + x
-    return int(x)
     '''Interest.
 
     This function calculates the final value of an investment after
@@ -102,4 +97,6 @@ def interest(principal, rate, periods):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-print(interest(10000,0.12,5))
+    x = principal * (rate * periods)
+    x = principal + x
+    return int(x)
