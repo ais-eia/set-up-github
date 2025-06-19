@@ -60,6 +60,13 @@ def caesar_cipher(message, shift):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
+    def shift_letter(letter, shift):
+        if letter == " ":
+            return " "
+        else:
+            x = ord(letter) - ord("A")
+            x = (x + shift) % 26
+            return chr(ord("A") + x)
     x = ""
     for letter in message:
         x += shift_letter(letter,shift)
@@ -96,8 +103,8 @@ def shift_by_letter(letter, letter_shift):
         return " "
     else:
         x = ord(letter) - ord("A")
-        shift_amount = ord(letter_shift) - ord("A")
-        x = (x + shift_amount) % 26
+        shift = ord(letter_shift) - ord("A")
+        x = (x + shift) % 26
         return chr(ord("A") + x)
 
 def vigenere_cipher(message, key):
@@ -130,15 +137,18 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    x = ""
-    key_index = 0
-    for letter in message:
-        if letter == " ":
-            x += " "
+    x = []
+    index = 0
+    length = len(key)
+    for char in message:
+        shift = ord(key[index % length]) - ord('A')
+        index += 1
+        if char == ' ':
+            x.append(' ')
         else:
-            x += shift_by_letter(letter, key[key_index])
-            key_index = (key_index + 1) % len(key)
-    return x
+            cipher = chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+            x.append(cipher)
+    return ''.join(x)
 
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
@@ -195,13 +205,13 @@ def scytale_cipher(message, shift):
         padding = shift - (len(message) % shift)
         message += "_" * padding
     
-    encoded = ""
+    x = ""
     num_columns = len(message) // shift
     
     for i in range(len(message)):
         index = (i // shift) + num_columns * (i % shift)
-        encoded += message[index]
-    return encoded
+        x += message[index]
+    return x
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
