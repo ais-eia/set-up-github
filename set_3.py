@@ -135,15 +135,3 @@ def eta(first_stop, second_stop, route_map):
                 current_stop = end
                 break
     return total_time
-
-legs = {
-    ('a1', 'a2'): {
-        'travel_time_mins': 10
-    },
-    ('a2', 'b1'): {
-        'travel_time_mins': 10230
-    },
-    ('b1', 'a1'): {
-        'travel_time_mins': 1
-    }
-}
